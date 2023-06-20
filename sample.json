@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "name": "Lorem",
+        "age": 22,
+        "isPromoted": true
+        
+    },
+    {
+        "id": 2,
+        "name": "Ipsum",
+        "age": 20,
+        "isPromoted": false
+        
+    },
+    {
+        "id": 3,
+        "name": "Dolor",
+        "age": 29,
+        "isPromoted": true
+        
+    },
+    {
+        "id": 4,
+        "name": "Sit Amet",
+        "age": 288,
+        "isPromoted": true
+        
+    },
+    {
+        "id": 344566,
+        "name": "Noureen",
+        "age": 34,
+        "isPromoted": false
+    },
+    {
+        "id": 3445,
+        "name": "Rahim",
+        "age": 35,
+        "isPromoted": false
+    }
+]

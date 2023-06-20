@@ -20,6 +20,8 @@ module.exports = {
       'second': '#ff0',
       white: colors.white,
       gray: colors.gray,
+      green: colors.green,
+      red: colors.red
     }
   },
   plugins: [],
