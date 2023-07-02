@@ -1,38 +1,67 @@
+'use client'
+
 import Image from 'next/image';
 import Link from 'next/link';
 import data from '../sample.json';
+import { useRef, useEffect, useState } from "react";
 
 
 export default function Home() {
+  const myElement = useRef(null);
+  const [objProp, setObjProp] = useState({ mwidth: 999, mheight: 999, mx: 999 });
+  const [tempBool, setTempBool] = useState(false);
+
+  useEffect(() => {
+    console.log("myElement", myElement.current.getBoundingClientRect());
+    console.log("objProp", objProp);
+  }, [objProp]);
+
+  const updateState = () => {
+    const { width, height, x, y } = myElement.current.getBoundingClientRect();
+
+    setObjProp((prevState) => ({
+      mx: x > 0 ? x : prevState.mx,
+      mwidth: width,
+      mheight: height
+    }));
+  }
+
+  const updateState2 = () => {
+    setTempBool(!tempBool);
+  }
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-around p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
+
+      <button className='font-mont' onClick={updateState}>Click me</button>
+      <button onClick={updateState2}>Click me 2</button>
+
+      <div className="w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
+        <div ref={myElement} className="fixed bottom-0 left-0 flex w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
+
+          <div>
             <Image
               src="/vercel.svg"
               alt="Vercel Logo"
-              className="dark:invert"
+              className="dark:invert inline-block"
               width={100}
               height={24}
               priority
             />
-          </a>
+
+            <Image
+              src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Plus_symbol.svg"
+              alt="Vercel Logo"
+              className="dark:invert inline-block"
+              width={100}
+              height={24}
+              priority
+            /></div>
+
         </div>
       </div>
 
-      <div className='wrapper p-2 my-4'>
+      <div className='wrapper p-2 my-1'>
         {
           data.map((item, index) => {
             return (
@@ -46,7 +75,7 @@ export default function Home() {
       </div>
 
       <div className='block'>
-        <p >Read <Link className='underline' href="/pages/page-one">this page!</Link></p>
+        <p >Visit <Link className='underline' href="/about">about page!</Link></p>
       </div>
 
 
