@@ -6,13 +6,12 @@ export default function Movie({ title, id, poster_path, release_date }) {
     // console.log(poster_path);
 
     return (
-        <Link href={`/${id}`} className='p-4 my-2'>
+        <Link href={`movie-list/${id}`} className='p-4 my-2'>
             <h1>{title}</h1>
             <h2>Release date: {release_date}</h2>
 
             <Image src={img_prefix + poster_path}
                 width={300} height={300} alt={title} loading="lazy"></Image>
         </Link>
-        // href={`/${id}`}
     )
 }
