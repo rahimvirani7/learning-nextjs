@@ -14,6 +14,9 @@ export default function Home() {
   useEffect(() => {
     console.log("myElement", myElement.current.getBoundingClientRect());
     console.log("objProp", objProp);
+    return () => {
+      console.log("clean-up triggered!")
+    }
   }, [objProp]);
 
   const updateState = () => {
